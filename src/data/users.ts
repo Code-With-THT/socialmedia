@@ -1,0 +1,11 @@
+import {User} from "../model/user";
+
+export const USERS: User[] = [
+  {
+    id: 'User1',
+    firstName: 'Matthew',
+    lastName: 'Ruiz',
+    username: 'chooch',
+    bio: 'Leading the React/React Native/Firebase tech teams @trouthousetech, @pencilbible, @amplinks, and @pocketcaddieai. TTP',
+  },
+];
