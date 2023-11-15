@@ -1,6 +1,9 @@
 export type Post = {
   id: string;
-  user: string; // User.id
+  /**
+   * User.id
+   */
+  user: string;
   text: string;
   createdDate: number;
 };
