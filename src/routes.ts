@@ -1,5 +1,5 @@
 export enum ROUTES {
-  HOME = 'home/',
-  POST = 'post/',
-  USER = 'user/',
+  HOME = "home/",
+  POST = "post/",
+  USER = "user/",
 }

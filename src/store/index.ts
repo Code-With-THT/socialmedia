@@ -1,12 +1,29 @@
-import { configureStore } from '@reduxjs/toolkit'
-import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
-import currentPost from './features/currentPost';
-import currentUser from './features/currentUser';
+import { configureStore } from "@reduxjs/toolkit";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+
+import currentPost from "./features/currentPost";
+import currentUser from "./features/currentUser";
+import posts from "./features/posts";
+import user from "./features/user";
 
 const store = configureStore({
   reducer: {
+    /**
+     * When the User visits the PostDetailPage, the currentPost slice of state is updated with the post that the User clicked on.
+     */
     currentPost,
+    /**
+     * When the User visits the UserDetailPage, the currentUser slice of state is updated with the user that the User clicked on.
+     */
     currentUser,
+    /**
+     * The currently logged in user is stored in the user slice of state.
+     */
+    user,
+    /**
+     * As the User comes across posts in the app, they are stored in the posts dump/slice of state.
+     */
+    posts,
   },
 });
 
