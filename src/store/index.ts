@@ -1,10 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
-import currentPost from "./features/currentPost";
-import currentUser from "./features/currentUser";
-import posts from "./features/posts";
-import user from "./features/user";
+import currentPost from './features/currentPost';
+import currentUser from './features/currentUser';
+import posts from './features/posts';
+import user from './features/user';
+import users from './features/users';
 
 const store = configureStore({
   reducer: {
@@ -24,6 +25,10 @@ const store = configureStore({
      * As the User comes across posts in the app, they are stored in the posts dump/slice of state.
      */
     posts,
+    /**
+     * As the currently logged in User comes across other Users, we will store their documents inside of this `users` slice
+     */
+    users,
   },
 });
 
@@ -42,3 +47,4 @@ export const useAppDispatch = () => useDispatch<AppDispatch>();
  * Used throughout the app to read from redux
  */
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+export type AppThunk<R> = ThunkAction<R, RootState, unknown, Action<any>>;

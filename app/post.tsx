@@ -1,13 +1,13 @@
-import { router } from "expo-router";
-import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { router } from 'expo-router';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { Header } from "../src/components/Header";
-import { USERS } from "../src/data/users";
-import { ROUTES } from "../src/routes";
-import { useAppDispatch, useAppSelector } from "../src/store";
-import { CurrentUserActions } from "../src/store/features/currentUser";
+import { Header } from '../src/components/Header';
+import { USERS } from '../src/data/users';
+import { ROUTES } from '../src/routes';
+import { useAppDispatch, useAppSelector } from '../src/store';
+import { CurrentUserActions } from '../src/store/features/currentUser';
 
 const PostDetailPage = () => {
   const dispatch = useAppDispatch();
@@ -26,7 +26,7 @@ const PostDetailPage = () => {
   };
 
   return (
-    <SafeAreaView style={styles.safeAreaView} edges={["top"]}>
+    <SafeAreaView style={styles.safeAreaView} edges={['top']}>
       <Header
         leftButton={{
           onPress: goBack,
@@ -36,9 +36,7 @@ const PostDetailPage = () => {
 
       <View style={styles.main}>
         <TouchableOpacity onPress={goToUserDetailPage}>
-          <Text>
-            {userInfo?.firstName} {userInfo?.firstName}
-          </Text>
+          <Text>{userInfo?.name}</Text>
         </TouchableOpacity>
 
         <Text>{currentPost.text}</Text>
@@ -55,7 +53,7 @@ const styles = StyleSheet.create({
   },
   main: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     padding: 10,
   },
 });

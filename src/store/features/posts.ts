@@ -1,6 +1,6 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { Post } from "../../model/post";
+import { Post } from '../../model/post';
 
 type PostsInitialState = {
   [key: string]: Post;
@@ -9,7 +9,7 @@ type PostsInitialState = {
 const initialState: PostsInitialState = {};
 
 const posts = createSlice({
-  name: "posts",
+  name: 'posts',
   initialState,
   reducers: {
     addPosts: (state, action: PayloadAction<Post[]>) => {

@@ -1,21 +1,21 @@
-import { router } from "expo-router";
-import { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { router } from 'expo-router';
+import { useState } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { Header } from "../src/components/Header";
-import { Friends } from "../src/components/user/Friends";
-import { Posts } from "../src/components/user/Posts";
-import { UserInfo } from "../src/components/user/UserInfo";
-import { useAppSelector } from "../src/store";
-import { BORDER_LIGHT_GREY } from "../src/utils/colors";
+import { Header } from '../src/components/Header';
+import { Friends } from '../src/components/user/Friends';
+import { Posts } from '../src/components/user/Posts';
+import { UserInfo } from '../src/components/user/UserInfo';
+import { useAppSelector } from '../src/store';
+import { BORDER_LIGHT_GREY } from '../src/utils/colors';
 
-type TABS = "Posts" | "Friends";
+type TABS = 'Posts' | 'Friends';
 
 const UserDetailPage = () => {
   const currentUser = useAppSelector((state) => state.currentUser);
 
-  const [activeTab, setActiveTab] = useState<TABS>("Posts");
+  const [activeTab, setActiveTab] = useState<TABS>('Posts');
 
   const goBack = () => {
     router.back();
@@ -24,7 +24,7 @@ const UserDetailPage = () => {
   const onTabPress = (tab: TABS) => setActiveTab(tab);
 
   return (
-    <SafeAreaView style={styles.safeAreaView} edges={["top"]}>
+    <SafeAreaView style={styles.safeAreaView} edges={['top']}>
       <Header leftButton={{ onPress: goBack }} showLogo />
 
       <View style={styles.main}>
@@ -34,8 +34,8 @@ const UserDetailPage = () => {
         {/* Tabs */}
         <Tabs onTabPress={onTabPress} />
 
-        <Posts isActive={activeTab === "Posts"} />
-        <Friends isActive={activeTab === "Friends"} />
+        <Posts isActive={activeTab === 'Posts'} />
+        <Friends isActive={activeTab === 'Friends'} />
       </View>
     </SafeAreaView>
   );
@@ -50,16 +50,16 @@ type TabsProps = {
 const Tabs = (props: TabsProps) => {
   const { onTabPress } = props;
 
-  const [activeTab, setActiveTab] = useState<TABS>("Posts");
+  const [activeTab, setActiveTab] = useState<TABS>('Posts');
 
   const onPostsPress = () => {
-    setActiveTab("Posts");
-    onTabPress("Posts");
+    setActiveTab('Posts');
+    onTabPress('Posts');
   };
 
   const onFriendsPress = () => {
-    setActiveTab("Friends");
-    onTabPress("Friends");
+    setActiveTab('Friends');
+    onTabPress('Friends');
   };
 
   return (
@@ -67,7 +67,7 @@ const Tabs = (props: TabsProps) => {
       <TouchableOpacity
         style={[
           styles.tabColumn,
-          activeTab === "Posts" ? styles.selectedTabColumn : {},
+          activeTab === 'Posts' ? styles.selectedTabColumn : {},
         ]}
         onPress={onPostsPress}
       >
@@ -77,7 +77,7 @@ const Tabs = (props: TabsProps) => {
       <TouchableOpacity
         style={[
           styles.tabColumn,
-          activeTab === "Friends" ? styles.selectedTabColumn : {},
+          activeTab === 'Friends' ? styles.selectedTabColumn : {},
         ]}
         onPress={onFriendsPress}
       >
@@ -95,18 +95,18 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   tabsContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     borderBottomWidth: 0.5,
     borderColor: BORDER_LIGHT_GREY,
   },
   tabColumn: {
-    width: "50%",
-    justifyContent: "center",
-    alignItems: "center",
+    width: '50%',
+    justifyContent: 'center',
+    alignItems: 'center',
     height: 50,
   },
   selectedTabColumn: {
     borderBottomWidth: 1,
-    borderColor: "blue",
+    borderColor: 'blue',
   },
 });

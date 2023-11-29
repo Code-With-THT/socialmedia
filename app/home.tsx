@@ -1,21 +1,35 @@
-import React, { useMemo } from "react";
-import { StyleSheet, ScrollView } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import React, { useMemo } from 'react';
+import { StyleSheet, ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { Header } from "../src/components/Header";
-import { PostCard } from "../src/components/PostCard";
-import { Spacing } from "../src/components/Spacing";
-import { useAppSelector } from "../src/store";
+import { ButtonText } from '../src/components/ButtonText';
+import { ContinueButton } from '../src/components/ContinueButton';
+import { Header } from '../src/components/Header';
+import { PostCard } from '../src/components/PostCard';
+import { Spacing } from '../src/components/Spacing';
+import { useAppDispatch, useAppSelector } from '../src/store';
+import { createPostThunk } from '../src/store/thunks/currentPost-thunk';
 
 const Home = () => {
+  const dispatch = useAppDispatch();
   const posts = useAppSelector((state) => state.posts);
 
+  /**
+   * START HERE:
+   * 1. Post does not show automatically - need to refresh
+   * 2. Post does not show User
+   * 3. Retrieve posts on auto-login
+   */
   const postsToShow = useMemo(() => {
     return Object.values(posts).sort((a, b) => b.createdDate - a.createdDate);
   }, []);
 
+  const createPost = () => {
+    dispatch(createPostThunk());
+  };
+
   return (
-    <SafeAreaView style={styles.container} edges={["top"]}>
+    <SafeAreaView style={styles.container} edges={['top']}>
       <Header showLogo />
       <ScrollView
         style={styles.scrollView}
@@ -28,6 +42,11 @@ const Home = () => {
 
         <Spacing vertical={100} />
       </ScrollView>
+
+      <ContinueButton
+        child={<ButtonText text="Create Post" />}
+        onPress={createPost}
+      />
     </SafeAreaView>
   );
 };
@@ -38,6 +57,6 @@ const styles = StyleSheet.create({
   container: {},
   scrollView: {},
   scrollViewContentContainer: {
-    alignItems: "center",
+    alignItems: 'center',
   },
 });

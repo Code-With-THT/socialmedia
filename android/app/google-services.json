@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "959404561827",
+    "project_id": "socialmediaapptht",
+    "storage_bucket": "socialmediaapptht.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959404561827:android:c72e9899f00b9619383616",
+        "android_client_info": {
+          "package_name": "com.tht.tutorials.socialmedia"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuMchW6r1lGLP8EStzP0xAJDMURkthZnQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

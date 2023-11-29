@@ -1,7 +1,13 @@
 export type User = {
   id: string;
-  firstName: string;
-  lastName: string;
+  name: string;
+  email: string;
   username: string;
   bio: string;
+
+  /**
+   * Metadata
+   */
+  createdDate: number;
+  createdDateString: string;
 };
