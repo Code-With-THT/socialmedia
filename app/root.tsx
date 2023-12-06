@@ -5,7 +5,7 @@ import { View, Text } from 'react-native';
 
 import { ROUTES } from '../src/routes';
 import { useAppDispatch } from '../src/store';
-import { logInUserThunk } from '../src/store/thunks/user-thunk';
+import { takeUserToAppThunk } from '../src/store/thunks/user-thunk';
 
 const Root = () => {
   const dispatch = useAppDispatch();
@@ -16,12 +16,14 @@ const Root = () => {
   useEffect(() => {
     if (auth().currentUser?.email) {
       dispatch(
-        logInUserThunk({
+        takeUserToAppThunk({
           email: auth().currentUser?.email || '',
           onSuccess: goToApp,
           onError: goToSignUp,
         }),
       );
+    } else {
+      goToSignUp();
     }
   }, []);
 

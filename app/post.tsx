@@ -1,10 +1,9 @@
 import { router } from 'expo-router';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Header } from '../src/components/Header';
-import { USERS } from '../src/data/users';
 import { ROUTES } from '../src/routes';
 import { useAppDispatch, useAppSelector } from '../src/store';
 import { CurrentUserActions } from '../src/store/features/currentUser';
@@ -13,14 +12,19 @@ const PostDetailPage = () => {
   const dispatch = useAppDispatch();
 
   const currentPost = useAppSelector((state) => state.currentPost);
-  const userInfo = USERS.find((user) => user.id === currentPost.user);
+  const users = useAppSelector((state) => state.users);
+
+  const currentUser = useMemo(
+    () => users[currentPost.user],
+    [users, currentPost.user],
+  );
 
   const goBack = () => {
     router.back();
   };
 
   const goToUserDetailPage = () => {
-    dispatch(CurrentUserActions.setCurrentUser(userInfo));
+    dispatch(CurrentUserActions.setCurrentUser(currentUser));
 
     router.push(ROUTES.USER);
   };
@@ -36,7 +40,7 @@ const PostDetailPage = () => {
 
       <View style={styles.main}>
         <TouchableOpacity onPress={goToUserDetailPage}>
-          <Text>{userInfo?.name}</Text>
+          <Text>{currentUser?.name}</Text>
         </TouchableOpacity>
 
         <Text>{currentPost.text}</Text>

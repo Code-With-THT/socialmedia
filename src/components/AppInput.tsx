@@ -7,6 +7,7 @@ type Props = TextInputProps & {
   value: string;
   onChangeText: (value: string) => void;
   customStyles?: ViewStyle;
+  isTextArea?: boolean;
 };
 
 export const AppInput = (props: Props) => {
@@ -17,11 +18,13 @@ export const AppInput = (props: Props) => {
     autoCorrect,
     autoCapitalize,
     secureTextEntry,
+    isTextArea = false,
   } = props;
 
   const inputStyles: ViewStyle = {
     ...styles.input,
     ...customStyles,
+    height: isTextArea ? 120 : 45,
   };
 
   return (
@@ -32,6 +35,8 @@ export const AppInput = (props: Props) => {
       autoCorrect={autoCorrect}
       autoCapitalize={autoCapitalize}
       secureTextEntry={secureTextEntry}
+      numberOfLines={isTextArea ? 4 : 1}
+      multiline={isTextArea}
     />
   );
 };

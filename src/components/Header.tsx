@@ -1,5 +1,5 @@
-import React from "react";
-import { View, StyleSheet, TouchableOpacity, Image } from "react-native";
+import React from 'react';
+import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 type HeaderButton = {
   child?: JSX.Element;
@@ -32,7 +32,7 @@ export const Header = (props: Props) => {
         {leftButton?.child ||
           (leftButton?.onPress && (
             <Image
-              source={require("../../assets/back.png")}
+              source={require('../../assets/back.png')}
               style={styles.backImage}
             />
           )) ||
@@ -53,32 +53,32 @@ export const Header = (props: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    flexDirection: "row",
+    width: '100%',
+    flexDirection: 'row',
     height: 40,
     borderBottomWidth: 0.5,
-    borderBottomColor: "#EEEEEE",
-    alignItems: "center",
-    justifyContent: "space-between",
+    borderBottomColor: '#EEEEEE',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     paddingHorizontal: 5,
   },
   leftButtonContainer: {
     height: 30,
     width: 30,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   logo: {
     height: 20,
     width: 20,
     borderRadius: 10,
-    backgroundColor: "blue",
+    backgroundColor: 'blue',
   },
   rightButtonContainer: {
     height: 30,
     width: 30,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   backImage: {
     height: 20,

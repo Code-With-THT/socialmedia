@@ -1,23 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { Post } from "../../model/post";
+import { Post } from '../../model/post';
 
 type CurrentPostInitialState = Post;
 
 const initialState: CurrentPostInitialState = {
-  id: "",
-  text: "",
-  user: "",
+  id: '',
+  text: '',
+  user: '',
   createdDate: Date.now(),
 };
 
 const currentPost = createSlice({
-  name: "currentPost",
+  name: 'currentPost',
   initialState,
   reducers: {
     setCurrentPost: (state, action) => {
       return action.payload;
     },
+    setDescription: (state, action: PayloadAction<string>) => {
+      state.text = action.payload;
+    },
+    reset: () => initialState,
   },
 });
 

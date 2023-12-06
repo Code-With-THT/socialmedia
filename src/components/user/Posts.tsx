@@ -1,9 +1,9 @@
-import React, { useMemo } from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import React, { useMemo } from 'react';
+import { ScrollView, StyleSheet } from 'react-native';
 
-import { useAppSelector } from "../../store";
-import { PostCard } from "../PostCard";
-import { Spacing } from "../Spacing";
+import { useAppSelector } from '../../store';
+import { PostCard } from '../PostCard';
+import { Spacing } from '../Spacing';
 
 type Props = {
   isActive: boolean;
@@ -43,6 +43,6 @@ export const Posts = (props: Props) => {
 const styles = StyleSheet.create({
   scrollView: {},
   scrollViewContentContainer: {
-    alignItems: "center",
+    alignItems: 'center',
   },
 });

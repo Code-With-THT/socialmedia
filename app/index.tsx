@@ -2,8 +2,8 @@ import { Redirect } from 'expo-router';
 
 import { ROUTES } from '../src/routes';
 
-const Root = () => {
+const AppEntry = () => {
   return <Redirect href={ROUTES.ROOT} />;
 };
 
-export default Root;
+export default AppEntry;

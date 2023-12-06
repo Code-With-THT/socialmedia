@@ -11,6 +11,7 @@ export const generateFirebaseId = (path: string) => {
 export enum FIREBASE_COLLECTIONS {
   USER = 'user',
   POST = 'post',
+  FRIENDSHIP = 'friendship',
 }
 
 export const getDocumentsFromQuerySnapshot = (

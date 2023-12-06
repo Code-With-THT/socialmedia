@@ -82,3 +82,23 @@ const handleWhereQuery = async (
     };
   }
 };
+
+export const getAllDocumentsWithPath = async (path: string) => {
+  let documents;
+  return await firestore()
+    .collection(path)
+    .get()
+    .then((snapshot) => {
+      documents = getDocumentsFromQuerySnapshot(snapshot);
+      return {
+        data: documents,
+        error: null,
+      };
+    })
+    .catch((error) => {
+      return {
+        data: null,
+        error,
+      };
+    });
+};

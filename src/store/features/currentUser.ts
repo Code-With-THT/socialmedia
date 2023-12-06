@@ -1,19 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-import { User } from "../../model/user";
+import { User } from '../../model/user';
 
 type CurrentUserInitialState = User;
 
 const initialState: CurrentUserInitialState = {
-  id: "",
-  firstName: "",
-  lastName: "",
-  username: "",
-  bio: "",
+  id: '',
+  firstName: '',
+  lastName: '',
+  username: '',
+  bio: '',
 };
 
 const currentUser = createSlice({
-  name: "currentUser",
+  name: 'currentUser',
   initialState,
   reducers: {
     setCurrentUser: (state, action) => {

@@ -1,9 +1,9 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View } from 'react-native';
 
-import { PostCard } from "../../components/PostCard";
-import { UserInfo } from "../../components/user/UserInfo";
-import { POSTS } from "../../data/posts";
-import { USERS } from "../../data/users";
+import { PostCard } from '../../components/PostCard';
+import { UserInfo } from '../../components/user/UserInfo';
+import { POSTS } from '../../data/posts';
+import { USERS } from '../../data/users';
 
 const Profile = () => {
   const myUser = USERS[0];
@@ -28,10 +28,10 @@ export default Profile;
 
 const styles = StyleSheet.create({
   container: {
-    height: "100%",
+    height: '100%',
   },
   posts: {
-    height: "100%",
-    alignItems: "center",
+    height: '100%',
+    alignItems: 'center',
   },
 });
