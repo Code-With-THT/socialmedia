@@ -9,6 +9,7 @@ export type Friendship = {
    */
   createdDate: number;
   createdDateString: string;
+  acceptedDate: number;
 };
 
 export enum FRIENDSHIP_STATUS {

@@ -1,14 +1,19 @@
 import { router } from 'expo-router';
 import { useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Header } from '../src/components/Header';
 import { Friends } from '../src/components/user/Friends';
 import { Posts } from '../src/components/user/Posts';
 import { UserInfo } from '../src/components/user/UserInfo';
+import { ROUTES } from '../src/routes';
 import { useAppSelector } from '../src/store';
 import { BORDER_LIGHT_GREY } from '../src/utils/colors';
+
+const MESSAGE_URL = Image.resolveAssetSource(
+  require('../assets/message.png'),
+).uri;
 
 type TABS = 'Posts' | 'Friends';
 
@@ -25,7 +30,16 @@ const MyProfile = () => {
 
   return (
     <SafeAreaView style={styles.safeAreaView} edges={['top']}>
-      <Header leftButton={{ onPress: goBack }} showLogo />
+      <Header
+        leftButton={{ onPress: goBack }}
+        showLogo
+        rightButton={{
+          child: (
+            <Image source={{ uri: MESSAGE_URL }} style={styles.messageIcon} />
+          ),
+          onPress: () => router.push(ROUTES.MESSAGES),
+        }}
+      />
 
       <View style={styles.main}>
         {/* User Info */}
@@ -108,5 +122,9 @@ const styles = StyleSheet.create({
   selectedTabColumn: {
     borderBottomWidth: 1,
     borderColor: 'blue',
+  },
+  messageIcon: {
+    height: 20,
+    width: 20,
   },
 });

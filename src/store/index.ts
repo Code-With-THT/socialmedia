@@ -4,6 +4,8 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import currentPost from './features/currentPost';
 import currentUser from './features/currentUser';
 import friendships from './features/friendships';
+import messageThreads from './features/messageTheads';
+import messages from './features/messages';
 import postBuilder from './features/postBuilder';
 import posts from './features/posts';
 import user from './features/user';
@@ -36,6 +38,8 @@ const store = configureStore({
      */
     postBuilder,
     friendships,
+    messageThreads,
+    messages,
   },
 });
 

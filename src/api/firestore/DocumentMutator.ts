@@ -16,3 +16,11 @@ export const createDocumentWithId = async (
       return { error };
     });
 };
+
+export const updateDocument = async (
+  path: string,
+  id: string,
+  data: object,
+) => {
+  await firestore().collection(path).doc(id).update(data);
+};

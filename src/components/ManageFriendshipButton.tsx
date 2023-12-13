@@ -42,6 +42,16 @@ export const ManageFriendshipButton = (props: Props) => {
     }
   }, []);
 
+  const onFriendshipButtonPressed = () => {
+    if (existingFriendship) {
+      if (existingFriendship.status === FRIENDSHIP_STATUS.ACCEPTED) {
+        Alert.alert('You are already friends!');
+      }
+    } else {
+      addFriend();
+    }
+  };
+
   const addFriend = () => {
     const onSuccess = () => {
       Alert.alert('Friend request sent!');
@@ -58,7 +68,7 @@ export const ManageFriendshipButton = (props: Props) => {
   };
 
   return (
-    <TouchableOpacity style={styles.button} onPress={addFriend}>
+    <TouchableOpacity style={styles.button} onPress={onFriendshipButtonPressed}>
       <Text style={styles.text}>{textToShow}</Text>
     </TouchableOpacity>
   );

@@ -7,6 +7,7 @@ import { FRIENDSHIP_STATUS, Friendship } from '../../model/friendship';
 import {
   createFriendshipDocument,
   getFriendshipsForUser,
+  updateFriendshipDocument,
 } from '../../services/friendship';
 import { FriendshipsActions } from '../features/friendships';
 
@@ -50,6 +51,29 @@ export const createFrienshipThunk = (
       onSuccess();
     } catch (error) {
       console.log('Could not retrieve Friendships for the user', error);
+
+      onError();
+    }
+  };
+};
+
+export const acceptFrienshipThunk = (
+  friendship: Friendship,
+  onSuccess: () => void,
+  onError: () => void,
+): AppThunk<void> => {
+  return async (dispatch) => {
+    try {
+      const newFriendship = Object.assign({}, friendship);
+      newFriendship.status = FRIENDSHIP_STATUS.ACCEPTED;
+      newFriendship.acceptedDate = Date.now();
+
+      updateFriendshipDocument(newFriendship);
+      dispatch(FriendshipsActions.addFriendships([newFriendship]));
+
+      onSuccess();
+    } catch (error) {
+      console.log('Could not accept Friendship', error);
 
       onError();
     }
